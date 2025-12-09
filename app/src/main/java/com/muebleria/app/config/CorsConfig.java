@@ -11,9 +11,11 @@ public class CorsConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")
                 .allowedOrigins(
-                        "http://localhost:3000",  // Desarrollo React
-                        "http://localhost:80",     // Producción Docker
-                        "http://localhost"         // Producción Docker alternativo
+                        "http://localhost:3000",  // Tu puerto original
+                        "http://localhost:3001",  // <--- AGREGA ESTA LÍNEA (El puerto de tu error)
+                        "http://localhost:5173",  // (Opcional) Vite a veces usa este puerto también
+                        "http://localhost:80",
+                        "http://localhost"
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH")
                 .allowedHeaders("*")
