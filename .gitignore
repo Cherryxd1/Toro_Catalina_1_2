@@ -1,0 +1,18 @@
+# Docker y secrets
+frontend/.env
+*.env.local
+
+# Frontend (general)
+frontend/node_modules/
+frontend/build/
+
+# IDE (general)
+.idea/
+.vscode/
+.DS_Store
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
