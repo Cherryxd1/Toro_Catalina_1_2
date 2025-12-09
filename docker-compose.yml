@@ -1,7 +1,9 @@
 version: '3.8'
 
 services:
-  # Base de datos MySQL
+  # ==========================================
+  # BASE DE DATOS MYSQL
+  # ==========================================
   mysql:
     image: mysql:8.0
     container_name: muebleria_mysql
@@ -13,6 +15,7 @@ services:
     ports:
       - "3307:3306"
     volumes:
+      # Persistencia de datos - los datos NO se pierden al reiniciar
       - mysql_data:/var/lib/mysql
     networks:
       - muebleria_network
@@ -23,13 +26,16 @@ services:
       retries: 5
       start_period: 30s
 
-  # Backend Spring Boot
+  # ==========================================
+  # BACKEND SPRING BOOT
+  # ==========================================
   backend:
     build:
-      context: ./backend
+      context: ./app
       dockerfile: Dockerfile
     container_name: muebleria_backend
     environment:
+      # El hostname 'mysql' se resuelve automáticamente dentro de la red Docker
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/${MYSQL_DATABASE}?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: ${MYSQL_USER}
       SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD}
@@ -42,13 +48,16 @@ services:
       - muebleria_network
     restart: unless-stopped
 
-  # Frontend React
+  # ==========================================
+  # FRONTEND REACT + NGINX
+  # ==========================================
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
     container_name: muebleria_frontend
     environment:
+      # Esta variable se puede usar en React si se necesita
       REACT_APP_API_URL: http://localhost:8080/api
     ports:
       - "80:80"
@@ -58,10 +67,16 @@ services:
       - muebleria_network
     restart: unless-stopped
 
+# ==========================================
+# VOLÚMENES PERSISTENTES
+# ==========================================
 volumes:
   mysql_data:
     driver: local
 
+# ==========================================
+# RED COMPARTIDA
+# ==========================================
 networks:
   muebleria_network:
     driver: bridge
