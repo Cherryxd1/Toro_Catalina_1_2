@@ -91,7 +91,7 @@ function App() {
             {/* SECCIÓN IZQUIERDA: CATÁLOGO */}
             <div style={{ flex: 2 }}>
                 <header style={{ marginBottom: '2rem' }}>
-                    <h1 style={{ fontSize: '2.5rem', color: '#333' }}>🛋️ Mueblería Hermanos</h1>
+                    <h1 style={{ fontSize: '2.5rem', color: '#333' }}> Mueblería Hermanos</h1>
                     <p>Catálogo de Productos</p>
                 </header>
 
@@ -136,7 +136,7 @@ function App() {
 
             {/* SECCIÓN DERECHA: CARRITO DE COMPRAS */}
             <div style={{ flex: 1, borderLeft: '1px solid #eee', paddingLeft: '2rem' }}>
-                <h2>🛒 Carrito de Compras</h2>
+                <h2> Carrito de Compras</h2>
                 <div style={{ background: '#f9f9f9', padding: '1rem', borderRadius: '8px', minHeight: '200px' }}>
 
                     {!carrito || carrito.items.length === 0 ? (
