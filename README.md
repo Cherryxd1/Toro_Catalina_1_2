@@ -5,7 +5,7 @@ Fecha: Diciembre 2024
 
 ---
 
-## 📖 Descripción del Proyecto
+##  Descripción del Proyecto
 
 Sistema web completo dockerizado para la gestión de inventario, cotizaciones y ventas
 de una mueblería. Implementa arquitectura en 3 capas (Frontend, Backend, Base de Datos)
@@ -13,7 +13,7 @@ con control automático de stock y aplicación de patrones de diseño.
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 ### Backend
 - **Java 17** con Spring Boot 3.1.5
